@@ -1,5 +1,6 @@
 package com.example.ecommercespring.dto;
 
+import jakarta.persistence.Embeddable;
 import lombok.*;
 
 @Getter
@@ -8,8 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 
+@Embeddable
 public class Rating {
-
     private Double rate;
     private Integer count;
 }

@@ -1,4 +1,4 @@
-package com.example.ecommercespring.CategoryController;
+package com.example.ecommercespring.Controller;
 import com.example.ecommercespring.dto.CategoryDTO;
 import com.example.ecommercespring.service.ICategoryService;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class CategoryController {
         this.categoryService = _categoryService;
     }
 
-    /***********Internally Happened this thing when constructor call
+    /*********** Internally Happened this thing when constructor call
 
     UserServiceImpl serviceBean = new UserServiceImpl();
 
@@ -41,6 +41,7 @@ public class CategoryController {
 }
 
 /*
+
 @RestController: Yeh do cheezon se milkar bana hai—@Controller + @ResponseBody. Iska matlab yeh class web requests sambhalegi aur jo bhi data return karegi, use JSON format me automatic client ko bhej degi.
 
 @RequestMapping("api/categories"): Is controller ka main path/route set karta hai.
@@ -50,5 +51,7 @@ public class CategoryController {
 ResponseEntity<...>: Yeh HTTP response ko customize karne ke liye hota hai.
 Isse hum control kar sakte hain ki client ko HTTP status code kya dikhega
 (jaise 200 OK, 404 Not Found, 201 Created).
+
 ResponseEntity.ok(result) ka matlab hai data ke sath Status Code: 200 bhejna.
+
 */

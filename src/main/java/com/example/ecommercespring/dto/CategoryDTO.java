@@ -8,7 +8,6 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class CategoryDTO {
 
      private String name;        // Category ka naam (e.g., electronics)
