@@ -19,5 +19,5 @@ public class FakeStoreCategoryResponseDTO {
     private String category;
     private String image;
     private Rating rating;
-
+    private String name;
 }

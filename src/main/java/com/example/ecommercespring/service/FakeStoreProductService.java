@@ -1,5 +1,6 @@
 package com.example.ecommercespring.service;
 
+import com.example.ecommercespring.dto.FakeStoreProductResponseDTO;
 import com.example.ecommercespring.dto.ProductDTO;
 import com.example.ecommercespring.gateway.IProductGateway;
 import org.springframework.stereotype.Service;

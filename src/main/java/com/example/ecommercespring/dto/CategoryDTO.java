@@ -1,6 +1,5 @@
 package com.example.ecommercespring.dto;
 
-
 import lombok.*;
 
 @Getter
@@ -8,15 +7,11 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class CategoryDTO {
 
-     private String name;        // Category ka naam (e.g., electronics)
-     private String title;       // Product ka title
-     private String description; // Product ki details
-     private String image;       // Product ki image ka URL link
-     private Double price;       // Product ka price
-     private Rating rating;
-
+     private Long id;
+     private String name;
 
 }
 

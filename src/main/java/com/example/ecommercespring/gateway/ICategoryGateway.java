@@ -1,12 +1,12 @@
 package com.example.ecommercespring.gateway;
 
-import com.example.ecommercespring.dto.CategoryDTO;
+import com.example.ecommercespring.dto.FakeStoreCategoryResponseDTO;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface ICategoryGateway {
 
-    List<CategoryDTO> getAllCategories() throws IOException;
+    List<FakeStoreCategoryResponseDTO> getAllCategories() throws IOException;
 
 }

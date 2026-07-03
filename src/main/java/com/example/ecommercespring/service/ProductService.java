@@ -1,8 +1,10 @@
 package com.example.ecommercespring.service;
 
 import com.example.ecommercespring.dto.ProductDTO;
+import com.example.ecommercespring.entity.Category;
 import com.example.ecommercespring.entity.Product;
 import com.example.ecommercespring.mapper.ProductMapper;
+import com.example.ecommercespring.repository.CategoryRepository;
 import com.example.ecommercespring.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,27 +13,29 @@ import java.io.IOException;
 @Service
 public class ProductService implements IProductService{
 
-    
-   private final ProductRepository repo;
+   /// Referenced Sharing
+   private final ProductRepository productRepository;
+   private final CategoryRepository categoryRepository;
 
-   ProductService(ProductRepository repo){
-       this.repo = repo;
+   /// Constructor Based Dependency Injection
+   ProductService(ProductRepository productRepository, CategoryRepository categoryRepository){
+       this.productRepository = productRepository;
+       this.categoryRepository = categoryRepository;
    }
 
    public ProductDTO getProductById(Long id) throws IOException{
-/*       return repo.findById(id)
-               .map(ProductMapper::toDto)
-               .orElseThrow(() -> new IOException("Product not found"));*/
 
-       Product product = repo.findById(id)
+       Product product = productRepository.findById(id)
                .orElseThrow(() -> new IOException("Product not found"));
-       ProductDTO dto = ProductMapper.toDto(product);
-       return dto;
+       return ProductMapper.toDto(product);
    }
 
+   public ProductDTO createProduct(ProductDTO dto) throws IOException {
 
-   public ProductDTO createProduct(ProductDTO dto){
-       Product saved = repo.save(ProductMapper.toEntity(dto));
+       Category category = categoryRepository.findById(dto.getCategoryId())
+               .orElseThrow(() -> new IOException("Category not found"));
+
+       Product saved = productRepository.save(ProductMapper.toEntity(dto, category));
        return ProductMapper.toDto(saved);
    }
 

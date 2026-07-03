@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FakeStoreProductDTO {
+public class FakeStoreProductResponseDTO {
 
     private Long id;
     private String category;
@@ -16,4 +16,6 @@ public class FakeStoreProductDTO {
     private String image;
     private Double price;
     private Rating rating;
+
+
 }

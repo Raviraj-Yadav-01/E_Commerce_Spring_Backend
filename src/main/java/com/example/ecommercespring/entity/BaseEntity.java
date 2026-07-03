@@ -8,8 +8,8 @@ import java.time.Instant;    /// Yeh Java ka modern Date-Time API hai jo nano-se
 @MappedSuperclass  /// Yeh Hibernate ko batata hai ki: "Main khud ek table nahi hoon, lekin jo bhi bacha-entity mujhe extends karega, mere saare database columns uski table me chupke se daal dena."
 @Getter
 @Setter
-public class BaseEntity {   /// Industry me ise Auditing Entity kehte hain. Iska kaam hota hai har table me common fields (jaise Primary Key, Kab data bana, kab update hua) ko control karna taaki hame har class me baar-baar same code na likhna pade.
-///
+public class BaseEntity {   ///* Industry me ise Auditing Entity kehte hain. Iska kaam hota hai har table me common fields (jaise Primary Key, Kab data bana, kab update hua) ko control karna taaki hame har class me baar-baar same code na likhna pade. */
+
     @Id // @Id is column ko Primary Key banata hai.
     @GeneratedValue(strategy = GenerationType.IDENTITY) /// IDENTITY strategy MySQL ko bolti hai ki jab bhi naya product aaye, toh uski ID automatic sequentially barhao (1, 2, 3...), developer ko manually ID set karne ki jarurat nahi hai.
     private Long id;  ///1.

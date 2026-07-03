@@ -1,6 +1,5 @@
 package com.example.ecommercespring.gateway;
 
-import com.example.ecommercespring.dto.CategoryDTO;
 import com.example.ecommercespring.dto.FakeStoreCategoryResponseDTO;
 import com.example.ecommercespring.gateway.api.FakeStoreCategoryApi;
 import org.springframework.stereotype.Component;
@@ -10,14 +9,16 @@ import java.util.List;
 @Component
 public class FakeStoreCategoryGateway implements ICategoryGateway {
 
+    /// shared Reference
     private final FakeStoreCategoryApi fakeStoreCategoryApi;
 
+    /// Constructor based dependency Injection
     public FakeStoreCategoryGateway(FakeStoreCategoryApi fakeStoreCategoryApi) {
         this.fakeStoreCategoryApi = fakeStoreCategoryApi;
     }
 
     @Override
-    public List<CategoryDTO> getAllCategories() throws IOException {
+    public List<FakeStoreCategoryResponseDTO> getAllCategories() throws IOException {
 
         List<FakeStoreCategoryResponseDTO> categoryResponse = this.fakeStoreCategoryApi.getAllFakeCategories().execute().body();
 
@@ -28,7 +29,7 @@ public class FakeStoreCategoryGateway implements ICategoryGateway {
 
         return categoryResponse.stream()
                 .map(product ->
-                CategoryDTO.builder()
+                        FakeStoreCategoryResponseDTO.builder()
                         .name(product.getCategory())
                         .title(product.getTitle())
                         .description(product.getDescription())
