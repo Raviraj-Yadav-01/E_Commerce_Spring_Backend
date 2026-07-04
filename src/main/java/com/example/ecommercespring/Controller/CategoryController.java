@@ -35,14 +35,10 @@ public class CategoryController {
             CategoryDTO categoryDTO = categoryService.getByName(name);
             return ResponseEntity.ok(categoryDTO);
         }else{
-
             List<FakeStoreCategoryResponseDTO> result = this.categoryService.getAllCategories();
             return ResponseEntity.ok(result);
         }
-
     }
-
-
 
     @PostMapping
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) throws IOException{

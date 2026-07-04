@@ -6,11 +6,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 
-
-
 @Repository
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
+    /// Isko technical bhasha me kehte hain "Derived Query Method" (ya Finder Method).
     Optional<Category> findByName(String name);
 
 }
