@@ -1,14 +1,14 @@
 package com.example.ecommercespring.dto;
 
+
 import lombok.*;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class ProductDTO {
+public class ProductWithCategoryDTO {
 
     private Long id;
     private Long categoryId;
@@ -17,7 +17,5 @@ public class ProductDTO {
     private String image;
     private Double price;
     private Rating rating;
-
     private CategoryDTO category;
-
 }

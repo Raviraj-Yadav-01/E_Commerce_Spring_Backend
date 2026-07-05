@@ -17,12 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
                 .build();
     }
 
-
     @Bean
     public FakeStoreCategoryApi fakeStoreCategoryApi(Retrofit retrofit){
         return retrofit.create(FakeStoreCategoryApi.class);
     }
-
 
     @Bean
     public FakeStoreProductApi fakeStoreProductApi(Retrofit retrofit){

@@ -1,12 +1,14 @@
 package com.example.ecommercespring.service;
 
 import com.example.ecommercespring.dto.ProductDTO;
+import com.example.ecommercespring.dto.ProductWithCategoryDTO;
 import com.example.ecommercespring.entity.Category;
 import com.example.ecommercespring.entity.Product;
 import com.example.ecommercespring.mapper.ProductMapper;
 import com.example.ecommercespring.repository.CategoryRepository;
 import com.example.ecommercespring.repository.ProductRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 
@@ -23,12 +25,14 @@ public class ProductService implements IProductService{
        this.categoryRepository = categoryRepository;
    }
 
+
    public ProductDTO getProductById(Long id) throws IOException{
 
        Product product = productRepository.findById(id)
                .orElseThrow(() -> new IOException("Product not found"));
        return ProductMapper.toDto(product);
    }
+
 
    public ProductDTO createProduct(ProductDTO dto) throws IOException {
 
@@ -38,5 +42,15 @@ public class ProductService implements IProductService{
        Product saved = productRepository.save(ProductMapper.toEntity(dto, category));
        return ProductMapper.toDto(saved);
    }
+
+    @Transactional
+    @Override
+    public ProductWithCategoryDTO getProductWithCategory(Long id) throws IOException {
+         Product product = productRepository.findById(id)
+                 .orElseThrow(() -> new IOException("ProductWithCategory Not Found"));
+
+         return ProductMapper.toProductWithCategoryDto(product);
+    }
+
 
 }

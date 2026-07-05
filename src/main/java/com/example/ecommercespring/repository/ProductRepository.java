@@ -27,4 +27,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             @Param("minPrice") double price,
             @Param("brand") String brandName
     );
+
 }
