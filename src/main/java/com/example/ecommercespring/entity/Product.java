@@ -22,7 +22,7 @@ public class Product extends BaseEntity {
     @Embedded ///This is why because rating ha two more attributes that is rate and count
     private Rating rating;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryID", nullable = false)
     private Category category;
 

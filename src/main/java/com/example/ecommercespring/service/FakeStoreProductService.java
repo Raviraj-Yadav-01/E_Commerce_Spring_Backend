@@ -1,7 +1,7 @@
 package com.example.ecommercespring.service;
 
-import com.example.ecommercespring.dto.FakeStoreProductResponseDTO;
 import com.example.ecommercespring.dto.ProductDTO;
+import com.example.ecommercespring.dto.ProductWithCategoryDTO;
 import com.example.ecommercespring.gateway.IProductGateway;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,6 @@ public class FakeStoreProductService implements IProductService{
 
     /// Reference passing
     private final IProductGateway productGateway;
-
     /// Constructor dependency
     FakeStoreProductService(IProductGateway productGateway){
         this.productGateway = productGateway;
@@ -27,6 +26,13 @@ public class FakeStoreProductService implements IProductService{
 
     @Override
     public ProductDTO createProduct(ProductDTO dto){
+        /// Not in use
+        return null;
+    }
+
+    @Override
+    public ProductWithCategoryDTO getProductWithCategory(Long id) throws IOException {
+        /// Not in use
         return null;
     }
 }

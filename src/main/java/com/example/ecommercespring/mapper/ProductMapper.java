@@ -1,5 +1,6 @@
 package com.example.ecommercespring.mapper;
 
+import com.example.ecommercespring.dto.ProductWithCategoryDTO;
 import com.example.ecommercespring.entity.Category;
 import com.example.ecommercespring.dto.ProductDTO;
 import com.example.ecommercespring.entity.Product;
@@ -36,6 +37,24 @@ public class ProductMapper {
                 .price(dto.getPrice())
                 .rating(dto.getRating())
                 .category(category)
+                .build();
+    }
+
+    public static ProductWithCategoryDTO toProductWithCategoryDto(Product product){
+
+        /// Null check
+        if(product == null){
+            return null;
+        }
+
+        return ProductWithCategoryDTO.builder()
+                .id(product.getId())
+                .title(product.getTitle())
+                .description(product.getDescription())
+                .image(product.getImage())
+                .price(product.getPrice())
+                .rating(product.getRating())
+                .category(CategoryMapper.toDto(product.getCategory()))
                 .build();
     }
 }
