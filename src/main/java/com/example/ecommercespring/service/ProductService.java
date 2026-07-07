@@ -34,7 +34,6 @@ public class ProductService implements IProductService{
        return ProductMapper.toDto(product);
    }
 
-
    public ProductDTO createProduct(ProductDTO dto) throws IOException {
 
        Category category = categoryRepository.findById(dto.getCategoryId())
@@ -44,7 +43,7 @@ public class ProductService implements IProductService{
        return ProductMapper.toDto(saved);
    }
 
-    @Transactional
+
     @Override
     public ProductWithCategoryDTO getProductWithCategory(Long id) throws IOException {
          Product product = productRepository.findById(id)
@@ -52,6 +51,5 @@ public class ProductService implements IProductService{
 
          return ProductMapper.toProductWithCategoryDto(product);
     }
-
 
 }
