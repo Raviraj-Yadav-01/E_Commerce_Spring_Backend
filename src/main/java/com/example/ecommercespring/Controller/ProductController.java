@@ -3,9 +3,7 @@ package com.example.ecommercespring.Controller;
 import com.example.ecommercespring.dto.ProductDTO;
 
 import com.example.ecommercespring.dto.ProductWithCategoryDTO;
-import com.example.ecommercespring.exception.ProductNotFoundException;
 import com.example.ecommercespring.service.IProductService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
@@ -24,13 +22,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") Long id) throws IOException {
-
             ProductDTO response = this.productService.getProductById(id);
             return ResponseEntity.ok(response);
-
     }
 
     @PostMapping
@@ -38,19 +33,11 @@ public class ProductController {
        return ResponseEntity.ok(productService.createProduct(dto));
     }
 
-
     @GetMapping("/{id}/details")
     public ResponseEntity<ProductWithCategoryDTO> getProductWithCategoryDTO(@PathVariable("id") Long id) throws IOException {
         ProductWithCategoryDTO response = this.productService.getProductWithCategory(id);
         return ResponseEntity.ok(response);
     }
-
-
-    /*@ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<String> handleProductNotFound(ProductNotFoundException productNotFoundException){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(productNotFoundException.getMessage());
-
-    }*/
 
 }
 
