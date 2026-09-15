@@ -1,4 +1,4 @@
-package com.example.ecommercespring;
+package com.example.EcommerceSpring;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
@@ -17,5 +17,4 @@ public class EcommerceSpringApplication {
 
 		SpringApplication.run(EcommerceSpringApplication.class, args);
 	}
-
 }

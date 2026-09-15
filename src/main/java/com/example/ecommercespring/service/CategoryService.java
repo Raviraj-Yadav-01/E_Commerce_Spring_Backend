@@ -1,54 +1,67 @@
-package com.example.ecommercespring.service;
+package com.example.EcommerceSpring.service;
 
-import com.example.ecommercespring.dto.CategoryDTO;
-import com.example.ecommercespring.dto.FakeStoreCategoryResponseDTO;
-import com.example.ecommercespring.entity.Category;
-import com.example.ecommercespring.mapper.CategoryMapper;
-import com.example.ecommercespring.repository.CategoryRepository;
+
+import com.example.EcommerceSpring.dto.CategoryDTO;
+import com.example.EcommerceSpring.entity.Category;
+import com.example.EcommerceSpring.mapper.CategoryMapper;
+import com.example.EcommerceSpring.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@Service("dbCategoryService")
+
+@Service
 public class CategoryService implements ICategoryService{
 
-    /// Reference Sharing
-    public final CategoryRepository categoryRepository;
 
-    /// Constructor Based Dependency Injection
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
+    private final CategoryRepository repository;
+
+    public CategoryService(CategoryRepository repository){
+        this.repository = repository;
     }
 
 
     @Override
-    public List<FakeStoreCategoryResponseDTO> getAllCategories() throws IOException {
-        return null;
+    public CategoryDTO createCategory(CategoryDTO dto) throws IOException {
+        Category saved = repository.save(CategoryMapper.toEntity(dto));
+        return CategoryMapper.toDto(saved);
     }
 
     @Override
-    public CategoryDTO createCategory(CategoryDTO categoryDTO) throws IOException {
+    public CategoryDTO getCategoryByName(String name) throws IOException {
+        Category category = repository.findByName(name)
+                .orElseThrow(() -> new IOException("Category not found with name: " + name));
 
-        Category entity = new Category();
-        entity.setName(categoryDTO.getName());
-
-        // 2. Repository se database me save karwaya
-        Category savedEntity = categoryRepository.save(entity);
-
-        // 3. Saved data ko wapas DTO me convert kiya
-        CategoryDTO result = new CategoryDTO();
-        result.setId(savedEntity.getId());
-        result.setName(savedEntity.getName());
-
-        return result;
+                return CategoryMapper.toDto(category);
     }
 
     @Override
-    public CategoryDTO getByName(String name) throws Exception {
-        Category category = categoryRepository.findByName(name)
-                .orElseThrow(() -> new Exception("category not found by their name :"+ name));
+    public List<CategoryDTO> getAllCategories(CategoryDTO dto) throws IOException {
 
-        return CategoryMapper.toDto(category);
+        List<CategoryDTO> dtos = new ArrayList<>();
+        for(Category category : repository.findAll()){
+            Category response = repository.save(category);
+            dtos.add(CategoryMapper.toDto(response));
+        }
+        return dtos;
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

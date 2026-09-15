@@ -1,17 +1,23 @@
-package com.example.ecommercespring.service;
+package com.example.EcommerceSpring.service;
 
-import com.example.ecommercespring.dto.FakeStoreProductResponseDTO;
-import com.example.ecommercespring.dto.ProductDTO;
-import com.example.ecommercespring.dto.ProductWithCategoryDTO;
 
-import java.io.IOException;
+import com.example.EcommerceSpring.dto.ProductDTO;
+import com.example.EcommerceSpring.dto.ProductWithCategoryDTO;
+
+import java.util.List;
+
 
 public interface IProductService {
 
-    ProductDTO getProductById(Long id) throws IOException;
 
-    ProductDTO createProduct(ProductDTO dto)throws IOException;
+    ProductDTO getProductById(Long id) throws Exception;
 
-    ProductWithCategoryDTO getProductWithCategory(Long id) throws IOException;
+
+    ProductDTO createProduct(ProductDTO dto) throws Exception;
+
+
+    ProductWithCategoryDTO getProductWithCategory(Long id) throws Exception;
+
+    List<ProductDTO> getAllProduct() throws Exception;
 
 }
