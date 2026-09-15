@@ -1,19 +1,19 @@
-package com.example.ecommercespring.service;
-import com.example.ecommercespring.dto.CategoryDTO;
-import com.example.ecommercespring.dto.FakeStoreCategoryResponseDTO;
+package com.example.EcommerceSpring.service;
+
+
+import com.example.EcommerceSpring.dto.CategoryDTO;
 
 import java.io.IOException;
 import java.util.List;
 
-
-
 public interface ICategoryService {
 
-      List<FakeStoreCategoryResponseDTO> getAllCategories() throws IOException;
+    CategoryDTO createCategory(CategoryDTO dto) throws IOException;
 
-      CategoryDTO createCategory(CategoryDTO categoryDTO) throws IOException;
 
-      CategoryDTO getByName(String name) throws Exception;
+    CategoryDTO getCategoryByName(String name) throws IOException;
 
+
+    List<CategoryDTO> getAllCategories(CategoryDTO dto) throws IOException;
 
 }

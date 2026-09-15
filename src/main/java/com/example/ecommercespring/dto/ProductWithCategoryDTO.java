@@ -1,21 +1,22 @@
-package com.example.ecommercespring.dto;
+package com.example.EcommerceSpring.dto;
 
 
 import lombok.*;
 
-@Setter
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class ProductWithCategoryDTO {
 
     private Long id;
-    private Long categoryId;
     private String title;
     private String description;
     private String image;
     private Double price;
-    private Rating rating;
+    private RatingDTO rating;
+
     private CategoryDTO category;
+
 }

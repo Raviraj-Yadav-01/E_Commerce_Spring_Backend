@@ -1,7 +1,6 @@
-package com.example.ecommercespring.entity;
+package com.example.EcommerceSpring.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
@@ -14,12 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Category extends BaseEntity{
+public class Category extends BaseEntity {
 
         @Column(nullable=false, unique=true)
         private String name;
 
-        @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+        @OneToMany(mappedBy = "category")
         private List<Product> products;
 
 }
